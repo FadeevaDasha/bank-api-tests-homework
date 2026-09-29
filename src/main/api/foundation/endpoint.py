@@ -5,12 +5,19 @@ from typing import Optional, Type
 from dataclasses import dataclass
 
 from src.main.api.models.create_account_response import CreateAccountResponse
+from src.main.api.models.create_credit_request import CreateCreditRequest
+from src.main.api.models.create_credit_response import CreateCreditResponse
+from src.main.api.models.create_user_credit_request import CreateUserCreditRequest
 from src.main.api.models.create_user_request import CreateUserRequest
 from src.main.api.models.create_user_response import CreateUserResponse
+from src.main.api.models.credit_repay_request import CreditRepayRequest
+from src.main.api.models.credit_repay_response import CreditRepayResponse
 from src.main.api.models.deposit_account_request import DepositAccountRequest
 from src.main.api.models.deposit_account_response import DepositAccountResponse
 from src.main.api.models.login_user_request import LoginUserRequest
 from src.main.api.models.login_user_response import LoginUserResponse
+from src.main.api.models.transfer_account_request import TransferAccountRequest
+from src.main.api.models.transfer_account_response import TransferAccountResponse
 
 
 @dataclass
@@ -49,5 +56,29 @@ class Endpoint(Enum):
         request_model = DepositAccountRequest,
         url = '/account/deposit',
         response_model = DepositAccountResponse
+    )
+
+    TRANSFER_ACCOUNT = EndpointConfiguration(
+        request_model= TransferAccountRequest,
+        url = '/account/transfer',
+        response_model = TransferAccountResponse
+    )
+
+    ADMIN_CREATE_USER_CREDIT = EndpointConfiguration(
+        request_model=CreateUserCreditRequest,
+        url = '/admin/create',
+        response_model = CreateUserResponse
+    )
+
+    CREATE_CREDIT = EndpointConfiguration(
+        request_model=CreateCreditRequest,
+        url='/credit/request',
+        response_model=CreateCreditResponse
+    )
+
+    CREDIT_REPAY = EndpointConfiguration(
+        request_model = CreditRepayRequest,
+        url = '/credit/repay',
+        response_model=CreditRepayResponse
     )
 

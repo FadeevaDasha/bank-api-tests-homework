@@ -1,0 +1,11 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Allure
+allure-results/
+allure-report/
+
+# Virtual environment
+.venv/
+venv/
