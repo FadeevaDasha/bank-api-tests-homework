@@ -1,6 +1,7 @@
 from src.main.api.foundation.endpoint import Endpoint
 from src.main.api.foundation.requesters.crud_requester import CrudRequester
 from src.main.api.foundation.requesters.validate_crud_requester import ValidateCrudRequester
+from src.main.api.models.create_user_credit_request import CreateUserCreditRequest
 from src.main.api.models.create_user_request import CreateUserRequest
 from src.main.api.models.login_user_request import LoginUserRequest
 from src.main.api.steps.base_steps import BaseSteps
@@ -38,4 +39,14 @@ class AdminSteps(BaseSteps):
             Endpoint.LOGIN_USER,
             ResponseSpecs.request_ok()
         ).post(login_user_request)
+        return response
+
+    def create_user_credit(self, create_user_credit_request: CreateUserCreditRequest):
+        response = ValidateCrudRequester(
+            RequestsSpecs.auth_headers(username='admin', password='123456'),
+            Endpoint.ADMIN_CREATE_USER_CREDIT,
+            ResponseSpecs.request_ok()
+        ).post(create_user_credit_request)
+
+        self.created_obj.append(response)
         return response

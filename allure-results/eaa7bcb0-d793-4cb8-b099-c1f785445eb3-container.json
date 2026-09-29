@@ -1,0 +1,1 @@
+{"uuid": "bfc522d2-4e37-4acc-b1b0-2eb428b7e89f", "children": ["a6cf4a27-b44a-455a-998b-5d61eeae7f35"], "befores": [{"name": "expected_transfer_balance", "status": "passed", "start": 1790495318050, "stop": 1790495318050}], "afters": [{"name": "expected_transfer_balance::<lambda>", "start": 1790495318436}], "start": 1790495318050, "stop": 1790495318436}
