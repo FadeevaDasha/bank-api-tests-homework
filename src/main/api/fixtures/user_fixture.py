@@ -54,8 +54,12 @@ def transfer_account_request(deposit_first_account, amount):
     )
 
 @pytest.fixture
-def expected_transfer_balance(transfer_account_request):
-    return 9000 - transfer_account_request.amount
+def transfer_initial_balance():
+    return 9000
+
+@pytest.fixture
+def expected_transfer_balance(transfer_account_request, transfer_initial_balance):
+    return transfer_initial_balance - transfer_account_request.amount
 
 
 @pytest.fixture
@@ -92,10 +96,14 @@ def credit_repay_request(api_manager, create_credit_account, create_user_credit_
     )
 
 @pytest.fixture
-def credit_repay_invalid_request(api_manager, create_credit_account, create_user_credit_request, amount):
+def credit_amount():
+    return 10000
+
+@pytest.fixture
+def credit_repay_invalid_request(api_manager, create_credit_account, create_user_credit_request, amount, credit_amount):
     create_credit_request = CreateCreditRequest(
         accountId=create_credit_account.id,
-        amount=10000,
+        amount=credit_amount,
         termMonths=12
     )
 
